@@ -4,3 +4,8 @@ from django.http import HttpResponse
 # Create your views here.
 def index(request):
     return HttpResponse("<p>Hello, world. You're at the blog index.</p>")
+
+
+
+def about(request):
+    return HttpResponse("<p>Hello, world. You're at the blog about.</p>")
