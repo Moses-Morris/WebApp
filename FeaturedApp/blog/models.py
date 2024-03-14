@@ -10,4 +10,5 @@ class Post(models.Model):
     date = models.DateField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=123)
 
-    
+    def __str__(self): #megic /dunder methods
+        return self.title
