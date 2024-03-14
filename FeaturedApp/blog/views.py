@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from .models import Post
 
 posts = [
     {
@@ -20,7 +20,7 @@ posts = [
 # Create your views here.
 def index(request):
     context = {
-        'posted' : posts
+        'posted' : Post.objects.all()
     }
     #return HttpResponse("<p>Hello, world. You're at the blog index.</p>")
     return render(request, 'index.html', context)
