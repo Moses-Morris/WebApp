@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages #messages.warning, messages. , messages.error, ,messages.success
 from .forms import UserRegisterForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -13,7 +14,7 @@ def register(request):
             form.save()
             username = form.cleaned_data.get('username') #form.cleaned_data['username'] #or ')
             messages.success(request, f'Account created for {username}!')
-            return redirect('blogLogin')
+            return redirect('Login')
         else:
             messages.error(request, f'Account not created!')
     else:
@@ -27,9 +28,6 @@ def register(request):
     }
     return  render(request, 'register.html' , context)
 
-def login(request):
-    context = {
-        'title': 'Login',
-        'content': 'Welcome to the registration page'
-    }
-    return render(request, 'login.html', context)
+@login_required
+def profile(request):
+    return render(request, 'profile.html')

@@ -54,11 +54,17 @@
                     <a class="nav-link disabled" aria-disabled="true">Disabled</a>
                   </li>
                 </ul>
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-              </div>
+                <div>
+                {% if user.is_authenticated %}
+                    <form action="{% url 'Logout' %}" method="post">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-outline-success">Logout</button>
+                    </form>
+                  {% else %}
+                  <a class="btn btn-outline-success" href="{% url 'Register' %}">Register</a>
+                  <a class="btn btn-outline-success" href="{% url 'Login' %}">Login</a>
+                  {% endif %}
+                </div>
             </div>
           </nav>
           
@@ -71,9 +77,13 @@
               {% endfor %}
             {% endif %}
           </div>
-        {% block content %}
+          <div class="container">
+            <!-- Content here -->
+            {% block content %}
         
-        {% endblock %}
+            {% endblock %}
+          </div>
+       
         
         <script src="" async defer></script>
     </body>
