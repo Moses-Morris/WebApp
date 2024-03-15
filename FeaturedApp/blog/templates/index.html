@@ -2,13 +2,15 @@
 {% block content %}
      
 <h3><ul>Home Index Page</ul></h3>
+<div class="row">
+    {% for post in posted %}
+        <p>{{ post.title }}</p>
+        <p>{{ post.content }}</p>
+        <p>{{ post.author }}</p>
+        <p>{{ post.date }}</p>
+        <hr>
+    {% endfor %}
+</div>
 
-{% for post in posted%}
-    <p>{{ post.title }}</p>
-    <p>{{ post.content }}</p>
-    <p>{{ post.author }}</p>
-    <p>{{ post.date }}</p>
-    <hr>
-{% endfor %}
 
 {% endblock  %}
