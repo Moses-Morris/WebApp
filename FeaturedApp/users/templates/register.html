@@ -4,8 +4,20 @@
 {% if title %}
     <h1>{{ title  }} </h1>
 {% endif %}
+<div>
+    {% if messages %}
+      {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">
+              {{ message }}
+          </div>
+      {% endfor %}
+    {% endif %}
+  </div>
 <form method="POST">
     {% csrf_token %}
+    {{ form.as_p}}
+    <button type="submit" class="btn btn-primary">Submit</button>
+
     <!--div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Email address</label>
       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -18,9 +30,9 @@
     <div class="mb-3 form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div-->
-    {{ form.as_p}}
-    <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button-->
+    
   </form>
 
 {% endblock %}

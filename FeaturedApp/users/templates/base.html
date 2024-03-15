@@ -60,8 +60,19 @@
               </div>
             </div>
           </nav>
-
-        {% block content %}{% endblock %}
+          
+          <div>
+            {% if messages %}
+              {% for message in messages %}
+                  <div class="alert alert-{{ message.tags }}">
+                      {{ message }}
+                  </div>
+              {% endfor %}
+            {% endif %}
+          </div>
+        {% block content %}
+        
+        {% endblock %}
         
         <script src="" async defer></script>
     </body>
