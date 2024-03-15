@@ -6,7 +6,7 @@
     {% for post in posted %}
         <h3>{{ post.title }}</h3>
         <p>{{ post.content }}</p>
-        <h6>{{ post.author }}</h6>
+        <h6>Published By : {{ post.author }}</h6>
         <p><ul>{{ post.date }}</ul></p>
         <hr>
     {% endfor %}
