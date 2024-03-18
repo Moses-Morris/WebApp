@@ -1,87 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
 {% load crispy_forms_tags %}
-{% if title %}
-    <h1>{{ title  }} </h1>
-{% endif %}
-<div class="">
-    {% if messages %}
-      {% for message in messages %}
-          <div class="alert alert-{{ message.tags }}">
-              {{ message }}
-          </div>
-      {% endfor %}
-    {% endif %}
-  </div>
-  <div class="content-section">
-    <form method="POST">
-        {% csrf_token %}
-        <div class="mb-1">
-            <fieldset class="form-group">
-                <div class="form-group">
-                    {{ form|crispy }}
-                </div>
-            </fieldset>
-            
-        </div>
-        
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>    
-  </div>
 
-    <!--div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+
+  <section class="text-gray-400 bg-gray-900 body-font relative">
+    <div class="container"  style="width:50%;">
+      
+      <div class="lg:w-2/2 md:w-2/2 flex flex-col md:ml-auto  md:py-8 mt-8 md:mt-0 ">
+        {% if title %}
+          <h2 class="text-white text-lg mb-1 font-medium title-font">{{ title }} Now</h2>
+        {% endif %}
+        <p class="leading-relaxed mb-5">Login To read and write unlimited Posts.</p>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-1">
+                <fieldset class="form-group">
+                    <div class="form-group">
+                        {{ form|crispy }}
+                    </div>
+                </fieldset>
+                
+            </div>
+            
+            <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+        </form>    
+        
+        
+      </div>
     </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button-->
+  </section>
     
-  </form>
-  <div class="accordion" id="accordionExample">
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Accordion Item #1
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Accordion Item #2
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Accordion Item #3
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 {% endblock %}
