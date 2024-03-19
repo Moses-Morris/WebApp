@@ -14,7 +14,7 @@
                     <p class="leading-relaxed mb-3">{{ post.content }}.</p>
                     
                     <a class="inline-flex items-center">
-                        <img alt="blog" src="https://dummyimage.com/103x103" class="w-8 h-8 rounded-full flex-shrink-0 object-cover object-center">
+                        <img alt="blog" src="{{ post.author.profile.image.url }}" class="w-8 h-8 rounded-full flex-shrink-0 object-cover object-center">
                         <span class="flex-grow flex flex-col pl-3">
                             <small class="leading-relaxed">{{ post.date}}</small>
                             <span class="title-font font-medium text-white">Published By : {{ post.author }}</span>
