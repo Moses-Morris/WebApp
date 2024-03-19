@@ -9,3 +9,12 @@ class UserRegisterForm(UserCreationForm):
     class Meta: #This class specifies how we want our fields to be shown It keeps configurations in one place   and within the same class
         model = User
         fields = ['username', 'email', 'password1', 'password2'] 
+
+
+
+class userUpdateForm(forms.ModelForm):
+    email = forms.EmailField(required=True)
+
+    class Meta:
+        model = User
+        fields = ['username', 'email']
