@@ -39,9 +39,11 @@
               <a class="mr-5 hover:text-white">Fourth Link</a>
             </nav>
             <div>
+            
               {% if user.is_authenticated %}
                 <form action="{% url 'Logout' %}" method="post">
                   {% csrf_token %}
+                  <a  class="inline-flex items-center  mr-3 hover:text-white" href="{% url 'Profile' %}">My Profile</a>
                   <button type="submit" class="btn btn-outline-success">Logout</button>
                 </form>
               {% else %}
