@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+
+  <section class="text-gray-400 bg-gray-900 body-font relative">
+    <div class="container"  style="width:50%;">
+      
+      <div class="lg:w-2/2 md:w-2/2 flex flex-col md:ml-auto  md:py-8 mt-8 md:mt-0 ">
+        {% if title %}
+          <h2 class="text-white text-lg mb-1 font-medium title-font">{{ title }} </h2>
+        {% endif %}
+        <p class="leading-relaxed mb-5">Create New Post.</p>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-1">
+                <fieldset class="form-group">
+                    <div class="form-group">
+                        {{ form|crispy }}
+                    </div>
+                </fieldset>
+                
+            </div>
+            
+            <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Update</button>
+        </form>    
+        
+        
+      </div>
+    </div>
+  </section>
+    
+{% endblock %}
