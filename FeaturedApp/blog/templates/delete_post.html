@@ -1,29 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
-{% load crispy_forms_tags %}
+
 
 
   <section class="text-gray-400 bg-gray-900 body-font relative">
     
     <div class="container"  style="width:50%;">
-        
+       
       <div class="lg:w-2/2 md:w-2/2 flex flex-col md:ml-auto  md:py-8 mt-8 md:mt-0 ">
         {% if title %}
           <h2 class="text-white text-lg mb-1 font-medium title-font">{{ title }} </h2>
         {% endif %}
-        <p class="leading-relaxed mb-5">Create New Post.</p>
+        <p class="leading-relaxed mb-5">Delete This Post.</p>
         <form method="POST">
             {% csrf_token %}
             <div class="mb-1">
                 <fieldset class="form-group">
                     <div class="form-group">
-                        {{ form|crispy }}
+                        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">{{ object.title }}</h1>
+                       <h3>Are you sure you would like to delete the post and its contents ?</h3>
                     </div>
                 </fieldset>
                 
             </div>
-            
-            <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Update</button>
+            <a href="{% url 'postDetail'  object.id %}" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Not Sure</a>
+            <button type="submit" class="text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg">Yes, Delete Post</button>
         </form>    
         
         

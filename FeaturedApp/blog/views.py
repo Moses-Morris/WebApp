@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Post
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
-from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib import messages
 
 
 # Create your views here.
@@ -25,22 +25,55 @@ class PostListView(ListView):
 class PostDetailView(DetailView):
     model = Post
     template_name = 'post.html'
-
+    
 
 class CreatePostView(LoginRequiredMixin, CreateView):
     model = Post
     template_name = 'create_post.html'
     fields = ['title', 'content']
 
+   
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+    
+    
+
+
+class UpdatePostView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Post
+    template_name = 'update_post.html'
+    fields = ['title', 'content']
+
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+    def test_func(self): #this function is overriden by the UserPassesTestMixin
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
 
-class UpdatePostView(LoginRequiredMixin, UpdateView):
+    
+
+
+class DeletePostView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
-    template_name = 'update_post.html'
+    template_name = 'delete_post.html'
     fields = ['title', 'content']
+
+    success_url =  '/'
+
+    def test_func(self): #this function is overriden by the UserPassesTestMixin
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
+
+    
+
 
 
 
