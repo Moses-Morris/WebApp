@@ -2,12 +2,15 @@
 {% block content %}
 <section class="text-gray-400 bg-gray-900 body-font">
     <div class="container px-5 py-24 mx-auto">
-      <div class="flex flex-wrap -mx-4 -my-8">
+        {{ view.kwargs.post.username }}
+        
+      <div class="flex flex-wrap -mx-4 -my-8 ">
         {% for post in posted %}
+       
         <div class="py-8 px-4 lg:w-1/3">
-           
+          
             <div class="h-full flex items-start border-b">
-                
+                <!--{{ view.kwargs.post.username }} has {{ page_obj.paginator.count  }}-->
                 <div class="flex-grow pl-6">
                     <h2 class="tracking-widest text-xs title-font font-medium text-indigo-400 mb-1">CATEGORY : TECH</h2>
                     <a href="{% url 'postDetail' post.id %}" class="title-font text-xl font-medium text-white mb-3">{{ post.title }}</a>
@@ -15,16 +18,10 @@
                     
                     <a class="inline-flex items-center">
                         <img alt="blog" src="{{ post.author.profile.image.url }}" class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center">
-                        <span class=" flex flex-col pl-3">
+                        <span class="flex-grow flex flex-col pl-3">
                             <small class="leading-relaxed">{{ post.date}}</small>
-                            <span class="flex flex-row">
-                              <span class="title-font font-medium text-white">{{ post.author }}</span> 
-                              <a href="{% url 'postUser' post.author.username %}"> <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                <path d="M5 12h14M12 5l7 7-7 7"></path>
-                              </svg></a>
-                            </span>
+                            <span class="title-font font-medium text-white">Published By : {{ post.author }}</span>
                         </span>
-                        
                         
                     </a>
                 
