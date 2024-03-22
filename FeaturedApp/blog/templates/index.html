@@ -29,7 +29,26 @@
           
         </div>
         {% endfor %}
+
+        
+      
       </div>
+    </div>
+    <div class="container mx-auto flex  px-5 py-24 justify-center items-center">
+      {% if is_paginated %}
+          {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }} "     class="flex-shrink-0 w-10 h-10 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">{{ page_obj.previous_page_number }}
+            </a>
+          {% endif %}
+
+          <a href="?page={{ page_obj.page_range }} "     class="flex-shrink-0 w-10 h-10 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-blue-500 text-white relative z-10 title-font font-large text-sm">{{ page_obj.number }} </a>
+
+          {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }} "     class="flex-shrink-0 w-10 h-10 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">{{ page_obj.next_page_number }}
+          </a>
+          {% endif %}
+        
+      {% endif %}
     </div>
   </section>  
 
